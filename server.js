@@ -1,5 +1,5 @@
-var express = require('express');
-var morgan = require('morgan');
+var express = require('express');//libraryThatsUsedToCreateTheWebServerdoesTheWorkOfLearningHowToListenOnPortsAndHandlingHTTPConnections
+var morgan = require('morgan'); //HelpsUsOutputLogsOfTheServer Ex:HowTheReqsAreCOmingANdHowWeAreResponding
 var path = require('path');
 
 var app = express();
@@ -10,13 +10,24 @@ app.get('/', function (req, res) {
 });
 
 app.get('/ui/style.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
-});
+  res.sendFile(path.join(__dirname, 'ui', 'style.css')); 
+}); //if the above URL path is requested, then the above function(.sendFile) will get executed
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
+app.get('/article-one', function(req, res){
+  res.send('Article one requested and will be served here');
+});
+
+app.get('/article-two', function(req, res){
+  res.send('Article two requested and will be served here');
+});
+
+app.get('/article-three', function(req, res){
+  res.send('Article three requested and will be served here');
+});
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
